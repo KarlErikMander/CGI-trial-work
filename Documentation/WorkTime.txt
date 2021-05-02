@@ -1,0 +1,10 @@
+30/4/2021 Friday:
+13:00 - 17:00 Desktop and mobile UI design
+
+01/5/2021 Saturday:
+11:00 - 13:00 Creating desktop html and css
+17:00 - 01:45 Creating desktop html,css and javascript
+
+02/05/2021 Sunday:
+10:00 - 15:35 Map functionality and api 
+16:50 - 00:55 Javascript, map functionality, api, graph and overall fixes

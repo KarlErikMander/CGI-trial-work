@@ -1,0 +1,74 @@
+/*{
+  border: black solid 1px;
+}*/
+
+/* Common CSS for tabs*/
+
+#head {
+  background: rgb(255, 255, 255);
+}
+
+#pageContent{
+  min-height: 100vh ;
+}
+
+#body{
+  background: rgb(230, 230, 230);
+}
+.button{
+  transition: 0.5s;
+  border: black solid 1px;
+  background: rgb(238, 238, 238);
+}
+
+.button:hover{
+  background: rgb(204, 204, 204);
+}
+#tabContainer{
+  width: 90%;
+  border-radius: 25px;
+  background: rgb(211, 211, 211);
+}
+
+
+/* CSS for date selection */
+
+.tab{
+  animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+#singleDayContainer, #dayRangeContainer{
+  border-radius: 25px;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+
+/* CSS for location selection*/
+
+#map{
+  height: 40vh;
+}
+
+/* CSS for SingleResult tab*/
+
+#singleDayLength,#singleDaySunsetP,#singleDaySunriseP{
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+/*CSS for dayRangeResult tab */
+
+#dayRangeChart{
+  height: 40vh;
+}
