@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
   am4core.ready(initGraph);
   initEvents();
 });
+
 /**
  * Function sets all nececary event listeners
  */
 function initEvents() {
-  var titleContainer = document.getElementById("titleContainer");
   var singleDay = document.getElementById("singleDay");
   var dayRangeStart = document.getElementById("dayRangeStart");
   var dayRangeEnd = document.getElementById("dayRangeEnd");
@@ -36,11 +36,10 @@ function initEvents() {
   var buttonCalculate = document.getElementById("buttonCalculate");
   var buttonResetSingle = document.getElementById("buttonResetSingle");
   var buttonResetRange = document.getElementById("buttonResetRange");
+  var singleDayContainer = document.getElementById("singleDayContainer");
+  var dayRangeContainer = document.getElementById("dayRangeContainer");
 
   // Cant pass arguments so did this
-  titleContainer.addEventListener("click", function () {
-    switchTab("tabStart");
-  });
   buttonStart.addEventListener("click", function () {
     switchTab("tabSetDate");
   });
@@ -50,7 +49,8 @@ function initEvents() {
   buttonBackToStart.addEventListener("click", function () {
     switchTab("tabStart");
   });
-
+  singleDayContainer.addEventListener("click", handleDateInputClick);
+  dayRangeContainer.addEventListener("click", handleDateInputClick);
   singleDay.addEventListener("click", handleDateInputClick);
   dayRangeStart.addEventListener("click", handleDateInputClick);
   dayRangeEnd.addEventListener("click", handleDateInputClick);
@@ -219,6 +219,8 @@ function reset() {
   var singleDaySunrise = document.getElementById("singleDaySunriseP");
   var singleDaySunset = document.getElementById("singleDaySunsetP");
   var singleDayLength = document.getElementById("singleDayLength");
+  var singleDayContainer = document.getElementById("singleDayContainer");
+  var dayRangeContainer = document.getElementById("dayRangeContainer");
   // Reset single day results
   singleDaySunrise.innerHTML = "";
   singleDaySunset.innerHTML = "";
@@ -227,10 +229,12 @@ function reset() {
   singleDay.valueAsDate = null;
   dayRangeEnd.valueAsDate = null;
   dayRangeStart.valueAsDate = null;
-  // Reset map pin
+  // Reset map pin and map zoom
+
   longitudeTextBox.value = 5;
   latitudeTextBox.value = 25;
   handleLongLatTextBoxOnChange();
+  mymap.setZoom(2);
   // Empty result array
   dayRangeResults.length = [];
   // https://www.amcharts.com/docs/v4/tutorials/chart-was-not-disposed/
@@ -241,6 +245,9 @@ function reset() {
   // Reset container backround
   singleDayContainer.style.background = "none";
   dayRangeContainer.style.background = "none";
+  // Reset single and day range container shadow
+  singleDayContainer.style.boxShadow = "none";
+  dayRangeContainer.style.boxShadow = "none";
 }
 
 /**
@@ -267,8 +274,8 @@ function setSingleDayResultsCallback(data) {
   var jsonData = JSON.parse(data);
   if (jsonData.status == "OK") {
     // Set results to elements
-    singleDaySunriseP.innerHTML = jsonData.results.sunrise;
-    singleDaySunsetP.innerHTML = jsonData.results.sunset;
+    singleDaySunriseP.innerHTML = jsonData.results.sunrise + " UTC";
+    singleDaySunsetP.innerHTML = jsonData.results.sunset + " UTC";
     singleDayLength.innerHTML = jsonData.results.day_length;
     // Set singleDaySunriseP,singleDaySunsetP,singleDayLength opacity to 1 for transition effect 
     singleDaySunriseP.style.opacity = 1;
@@ -340,13 +347,17 @@ function switchTab(tabName) {
 function handleDateInputClick() {
   var singleDayContainer = document.getElementById("singleDayContainer");
   var dayRangeContainer = document.getElementById("dayRangeContainer");
-  // Check wich radiobutton is clicked and set corresponding backround to indicate wich is selected
-  if (this.name == "singleDay") {
+  // Check which container or date selector was clicked and set corresponding backround to indicate wich is selected
+  if (this.name == "singleDay" || this.id == "singleDayContainer") {
     dayChooser = "singleDay";
+    singleDayContainer.style.boxShadow = "0px 0px 0px 4px rgba(0,0,0,0.3)";
+    dayRangeContainer.style.boxShadow = "none";
     singleDayContainer.style.background = "rgb(190,190,190)";
     dayRangeContainer.style.background = "none";
   } else {
     dayChooser = "dayRange";
+    singleDayContainer.style.boxShadow = "none";
+    dayRangeContainer.style.boxShadow = "0px 0px 0px 4px rgba(0,0,0,0.3)";
     singleDayContainer.style.background = "none";
     dayRangeContainer.style.background = "rgb(190,190,190)";
   }
@@ -364,12 +375,13 @@ function validateDates() {
 
   // Check if user has selected single or dayRange 
   if (dayChooser == null) {
+    alert("Kuupäeva pole valitud!");
     return;
   }
   if (dayChooser == 'singleDay') {
     // Check if user has chosen single day
     if (singleDate.value == "") {
-      alert("Kuupäev on tühi");
+      alert("Kuupäev on tühi!");
     } else if (isValidDate(singleDate.value)) { // Check if the selected date is valid
       switchTab('tabSetLocation')
       // https://stackoverflow.com/questions/31030949/leaflet-map-not-showing-in-bootstrap-div?rq=1
@@ -404,7 +416,13 @@ function validateDates() {
         alert("Kuupäevad pole õiged!")
       }
     } else {
-      alert("Kuupäevad on tühjad!");
+      if(dayRangeStart.value == "" && dayRangeEnd.value == ""){
+        alert("Kuupäevad on tühjad!");
+      }else if(dayRangeStart.value == "" && dayRangeEnd.value != ""){
+        alert("Algus kuupäev on tühi!")
+      }else{
+        alert("Lõpp kuupäev on tühi!")
+      }
     }
   }
 }
