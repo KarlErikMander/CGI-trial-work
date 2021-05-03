@@ -1,1 +1,125 @@
 
+/*{
+    border: black solid 1px;
+}*/
+  
+  /* Title  CSS*/
+  #head {
+    background: rgb(255, 255, 255);
+  }
+  h2{
+      font-size: 50px;
+  }
+  #titleImageContainer{
+    width: 80%!important;
+  }
+
+  /* Common CSS for tabs*/
+
+  #tabsTitleContainer{
+    padding: 30px 0px 30px 0px!important;
+  }
+  .tab{
+    animation: fadeEffect 1s;
+  }
+  
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  h3{
+    font-size: 40px;
+  }
+
+  p{
+      font-size: 30px;
+  }
+
+  h4{
+      font-size: 35px;
+  }
+
+  #buttonStart, #buttonBackToStart, #buttonChooseLocation, 
+  #buttonBackToSetDate, #buttonCalculate, #buttonResetSingle, #buttonResetRange{
+      font-size: 30px;
+      padding: 15px 30px 15px 31px !important;
+      font-weight: 600;
+  }
+
+  #pageContent{
+    position: relative;
+    height: auto;
+    min-height: 100vh !important;
+    /*min-height: 100vh ;*/
+  }
+  
+  #body{
+    background: rgb(230, 230, 230);
+  }
+  .button{
+    transition: 0.5s;
+    border: black solid 1px;
+    background: rgb(238, 238, 238);
+  }
+  
+  .button:hover{
+    background: rgb(204, 204, 204);
+  }
+  #tabContainer{
+    width: 90%;
+    border-radius: 25px;
+    background: rgb(211, 211, 211);
+  }
+  
+  
+  /* CSS for date selection */
+  #dateRangeInputContainer{
+
+  }
+
+  #singleDay, #dayRangeStart, #dayRangeEnd{
+      margin: 20px 0px 20px 0px;
+      text-align: center;
+      font-size: 30px;
+  }
+
+  #singleDayContainer, #dayRangeContainer{
+
+    border-radius: 25px;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
+  
+  /* CSS for location selection*/
+  
+  #map{
+    height: 60vh;
+  }
+  
+  #latitude, #longitude{
+    font-size: 35px;
+  }
+
+  /* CSS for SingleResult tab*/
+  
+  #singleDayLength,#singleDaySunsetP,#singleDaySunriseP{
+    opacity: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  #resultImageContainer {
+    width: 50%!important;
+  }
+  /*CSS for dayRangeResult tab */
+  
+  #dayRangeChart{
+    height: 40vh;
+  }

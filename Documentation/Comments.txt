@@ -6,21 +6,19 @@ I created a design with all elements on one page, but it was too much for mobile
 Switched to step by step view where you enter a date, then location, and finally get results.
 Then copied it to desktop view and finished it.
 
-It is Friday, so that all for today. Tomorrow I will start with the technical part, where 
-I will research libraries and APIs.
+It is Friday, so that all for today. Tomorrow I will start with the technical part, where I will research libraries and APIs.
 
 01/05/2021 Saturday:
 
 I started with writing HTML. The main problem was making the whole page fluid, but I got it working.
-User input validation was a hassle. The main things that I have copied from StackOverflow are 
-time-related answers because why reinvent the wheel + I don't trust myself with time objects. 
-Too many corner cases. I started with the map, but it was getting late.
+User input validation was a hassle. The main things that I have copied from StackOverflow are time-related answers because why reinvent the wheel + I don't trust myself with time objects. Too many corner cases.
+I started with the map, but it was getting late.
 
 02/05/2021 Sunday:
 
-I made some pancakes and continued with the map. I finally got it working after troubleshooting 
-a weird bug where the map gets corrupted, but if you resize the window, it was fine again. After 
-that, I started implementing API 
-for data requests. Then multiple API requests for a date range, but that was getting quite heavy. 
-After that started looking for a graph to display date range data. There were a lot of 
-problems, but I finally got it working.
+I made some pancakes and continued with the map. I finally got it working after troubleshooting a weird bug where the map gets corrupted, but it was fine again if you resize the window. After that, I started implementing API 
+for data requests. Then multiple API requests for a date range, but that was getting quite heavy. After that started looking for a graph to display date range data. There were a lot of problems, but I finally got it working.
+
+03/05/2021 Monday:
+I started with creating mobile CSS because all functioning works. Creating CSS for mobile is uncomfortable because I don't have a solid testing platform other than Google Chrome mobile view.
+Currently, I have decided to create the CSS with Chrome mobile view and then test it on an actual phone.

@@ -8,3 +8,6 @@
 02/05/2021 Sunday:
 10:00 - 15:35 Map functionality and api 
 16:50 - 00:55 Javascript, map functionality, api, graph and overall fixes
+03/05/2021 Monday:
+
+10:00 - xx:xx Creating mobile css and testing. Final touches

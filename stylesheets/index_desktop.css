@@ -9,7 +9,10 @@
 }
 
 #pageContent{
-  min-height: 100vh ;
+  position: relative;
+  height: auto;
+  min-height: 100vh !important;
+  /*min-height: 100vh ;*/
 }
 
 #body{

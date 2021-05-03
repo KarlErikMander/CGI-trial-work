@@ -4,28 +4,33 @@
     <meta charset="UTF-8">
     <title>Päeva pikkuse kalkulaator</title>
     <link rel="icon" type="image/png" href="resources/favicon-32x32.png">
-    <link rel="stylesheet" href="stylesheets/common_mobile.css">
+    <!-- Leaflet css and javascript import -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+    <!-- Bootstrao 4.4.1 import -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+
+    <!-- Chart imports -->
     <script src="//cdn.amcharts.com/lib/4/core.js"></script>
     <script src="//cdn.amcharts.com/lib/4/charts.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <!-- CSS imports -->
+    <link rel="stylesheet" media="screen and (min-width:1024px)" href="stylesheets/index_desktop.css"/>
+    <link rel="stylesheet" media="screen and (max-width:1023px)" href="stylesheets/index_mobile.css"/>
 </head>
 
 <body>
     <div id="pageContent">
         <div id="head" class="row py-3 m-0">
             <div id="sunContainer" class="col d-flex justify-content-center align-self-center p-0">
-                <div id="imageContainer" class="w-25">
+                <div id="titleImageContainer" class="w-25">
                     <img src="resources/sun.png" alt="Sun" class="img-fluid ">
                 </div>
 
@@ -34,7 +39,7 @@
                 <h2>PÄEVA PIKKUSE KALKULAATOR</h2>
             </div>
             <div id="moonContainer" class="col d-flex justify-content-center align-self-center p-0">
-                <div id="imageContainer" class="w-25">
+                <div id="titleImageContainer" class="w-25">
                     <img src="resources/moon.png" alt="Moon" class="img-fluid">
                 </div>
             </div>
@@ -69,21 +74,21 @@
                     <div id="tabsBodyContainer" class="d-flex flex-column justify-content-center p-3">
 
                         <div id="singleDayContainer" class="p-2 m-1  d-flex flex-column text-center">
-                            <p class="m-0 px-1">Vali päev</p>
+                            <h4 class="m-0 px-1">Vali päev</h4 >
                             <div class="p-1">
                                 <input type="date" id="singleDay" name="singleDay">
                             </div>
                         </div>
 
                         <div id="dayRangeContainer" class="p-1 m-1  d-flex flex-column text-center">
-                            <p class="m-0 px-1">Või vali vahemik (Max 30 päeva)</p>
+                            <h4  class="m-0 px-1">Või vali vahemik (Max 15 päeva)</h4>
                             <div class="pb-1 d-flex justify-content-around">
-                                <div class="d-flex flex-column">
-                                    <p>Algus kuupäev</p>
+                                <div id="dateRangeInputContainer"class="d-flex flex-column">
+                                    <h4 >Algus kuupäev</h4 >
                                     <input type="date" id="dayRangeStart" name="dayRange">
                                 </div>
-                                <div class="d-flex flex-column">
-                                    <p>Lõpp kuupäev</p>
+                                <div id="dateRangeInputContainer"class="d-flex flex-column">
+                                    <h4 >Lõpp kuupäev</h4 >
                                     <input type="date" id="dayRangeEnd" name="dayRange">
                                 </div>
                             </div>
@@ -104,11 +109,11 @@
                         <div id="map" class="w-75"></div>
                         <div class="py-2 row">
                             <div class="col d-flex justify-content-center">
-                                <p class="m-0">Latitude⠀</p>
+                                <h4  class="m-0">Latitude⠀</h4>
                                 <input type="text" id="latitude" name="latitude" value="25" class="mx-2">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <p class="m-0">Longitude</p>
+                                <h4  class="m-0">Longitude</h4 >
                                 <input type="text" id="longitude" name="longitude" value="5" class="mx-2">
                             </div>
                         </div>
@@ -125,17 +130,17 @@
                     <div id="tabsBodyContainer" class="d-flex justify-content-center p-3 text-center">
                         <div id="singleDayResultContainer"
                             class="d-flex justify-content-around text-center align-items-center">
-                            <div id="imageContainer" class="w-25">
+                            <div id="resultImageContainer" class="w-25">
                                 <img src="resources/sun.png" alt="Sun" class="img-fluid w-50">
-                                <p id="singleDaySunriseP" class="m-0"></p>
+                                <h3 id="singleDaySunriseP" class="m-0"></h3>
                             </div>
                             <div>
-                                <h4>Päeva pikkus:</h4>
-                                <h4 id="singleDayLength" class="m-0"></h4>
+                                <h3>Päeva pikkus:</h3>
+                                <h2 id="singleDayLength" class="m-0"></h2>
                             </div>
-                            <div id="imageContainer" class="w-25">
+                            <div id="resultImageContainer" class="w-25">
                                 <img src="resources/moon.png" alt="Sun" class="img-fluid w-50">
-                                <p id="singleDaySunsetP" class="m-0"></p>
+                                <h3 id="singleDaySunsetP" class="m-0"></h3>
                             </div>
                         </div>
                     </div>

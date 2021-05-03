@@ -216,6 +216,13 @@ function reset() {
   var latitudeTextBox = document.getElementById("latitude");
   var singleDayContainer = document.getElementById("singleDayContainer");
   var dayRangeContainer = document.getElementById("dayRangeContainer");
+  var singleDaySunrise = document.getElementById("singleDaySunriseP");
+  var singleDaySunset = document.getElementById("singleDaySunsetP");
+  var singleDayLength = document.getElementById("singleDayLength");
+  // Reset single day results
+  singleDaySunrise.innerHTML = "";
+  singleDaySunset.innerHTML = "";
+  singleDayLength.innerHTML = "";
   // Reset all datePickers
   singleDay.valueAsDate = null;
   dayRangeEnd.valueAsDate = null;
@@ -226,6 +233,7 @@ function reset() {
   handleLongLatTextBoxOnChange();
   // Empty result array
   dayRangeResults.length = [];
+  // https://www.amcharts.com/docs/v4/tutorials/chart-was-not-disposed/
   // Dispose chart
   chart.dispose();
   // Set tab to start
@@ -252,7 +260,6 @@ function hhmmssToSeconds(input) {
  * @param {String} data 
  */
 function setSingleDayResultsCallback(data) {
-  console.log(data);
   var singleDaySunriseP = document.getElementById("singleDaySunriseP");
   var singleDaySunsetP = document.getElementById("singleDaySunsetP");
   var singleDayLength = document.getElementById("singleDayLength");
@@ -379,16 +386,16 @@ function validateDates() {
         var dateStart = new Date(dayRangeStart.value);
         var dateEnd = new Date(dayRangeEnd.value);
         if (dateStart < dateEnd) {
-          // check if two days difference is not larger than 30 days.
+          // check if two days difference is not larger than 15 days.
           // Source https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
           var diffTime = Math.abs(dateEnd - dateStart);
           var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-          if (diffDays <= 30) {
+          if (diffDays < 15) {
             switchTab('tabSetLocation');
             // https://stackoverflow.com/questions/31030949/leaflet-map-not-showing-in-bootstrap-div?rq=1
             mymap.invalidateSize();
           } else {
-            alert("Algus- ja lõppkuupäeva vahe on suurem, kui 30 päeva!");
+            alert("Algus- ja lõppkuupäeva vahe on suurem, kui 15 päeva!");
           }
         } else {
           alert("Algus kuupäev pole varem, kui lõpp kuupäev!")
