@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="ee">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +12,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-    <!-- Bootstrao 4.4.1 import -->
+    <!-- Bootstrap 4.4.1 import -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -22,15 +23,15 @@
     <script src="https://cdn.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
     <!-- CSS imports -->
-    <link rel="stylesheet" media="screen and (min-width:1024px)" href="stylesheets/index_desktop.css"/>
-    <link rel="stylesheet" media="screen and (max-width:1023px)" href="stylesheets/index_mobile.css"/>
+    <link rel="stylesheet" media="screen and (min-width:1024px)" href="stylesheets/index_desktop.css" />
+    <link rel="stylesheet" media="screen and (max-width:1023px)" href="stylesheets/index_mobile.css" />
 </head>
 
 <body>
     <div id="pageContent">
         <div id="head" class="row py-3 m-0">
             <div id="sunContainer" class="col d-flex justify-content-center align-self-center p-0">
-                <div id="titleImageContainer" class="w-25">
+                <div class="w-25 titleImageContainer">
                     <img src="resources/sun.png" alt="Sun" class="img-fluid ">
                 </div>
 
@@ -39,7 +40,7 @@
                 <h2>PÄEVA PIKKUSE KALKULAATOR</h2>
             </div>
             <div id="moonContainer" class="col d-flex justify-content-center align-self-center p-0">
-                <div id="titleImageContainer" class="w-25">
+                <div  class="w-25 titleImageContainer">
                     <img src="resources/moon.png" alt="Moon" class="img-fluid">
                 </div>
             </div>
@@ -48,89 +49,85 @@
         <div id="body" class="p-3 d-flex justify-content-center">
             <div id="tabContainer" class="py-3 d-flex flex-column">
                 <div id="tabStart" class="tab">
-                    <div id="tabsTitleContainer" class="d-flex justify-content-center p-3 text-center">
+                    <div class="d-flex justify-content-center p-3 text-center tabsTitleContainer">
                         <h3 id="tabsTitle">Tervist</h3>
                     </div>
-                    <div id="tabsBodyContainer" class="d-flex justify-content-center p-3 text-center">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce blandit neque justo, vitae
-                            elementum lorem euismod non. Nulla facilisi. Nullam a faucibus lacus, ut pellentesque
-                            sapien. Sed efficitur lacus lacinia justo tempor ultrices. Nam sed ullamcorper libero,
-                            elementum ultrices leo. Donec molestie gravida mattis. Sed tristique ligula auctor,
-                            dignissim magna sit amet, ultrices elit. Fusce auctor elit augue, eu ornare enim
-                            pellentesque ut. Aenean odio lorem, pulvinar nec volutpat volutpat, volutpat sed velit.
-                            Phasellus auctor libero augue, sit amet volutpat nulla laoreet eu. Maecenas vel sodales
-                            mauris. Nunc volutpat molestie tellus, vel elementum lectus consectetur nec. Fusce convallis
-                            elementum eros, in maximus lacus cursus non.</p>
+                    <div class="d-flex flex-column justify-content-center align-items-center p-3 text-center">
+                        <p>Antud kalkulaator on koostatud Karl Erik Manderi poolt CGI suvepraktika proovitööks</p>
+                        <p>Kalkulaator suudab arvutada päeva pikkust valitud kuupäevade ja asukoha abil ning üksikul päeval välja tuua
+                            päiksese tõusu ja languse</p>
+                        <p> Kalkulaator käsitleb sunrise-sunset.org API-st saadud andmeid</p>
+
                     </div>
-                    <div id="tabsFooterContainer" class="d-flex justify-content-around p-3">
+                    <div class="d-flex justify-content-around p-3">
                         <button id="buttonStart" class="button p-1">Alusta</button>
                     </div>
                 </div>
 
                 <div id="tabSetDate" class="tab">
-                    <div id="tabsTitleContainer" class="d-flex justify-content-center p-3 text-center">
+                    <div class="d-flex justify-content-center p-3 text-center tabsTitleContainer">
                         <h3>Määra kuupäev</h3>
                     </div>
-                    <div id="tabsBodyContainer" class="d-flex flex-column justify-content-center p-3">
+                    <div class="d-flex flex-column justify-content-center p-3">
 
                         <div id="singleDayContainer" class="p-2 m-1  d-flex flex-column text-center">
-                            <h4 class="m-0 px-1">Vali päev</h4 >
+                            <h4 class="m-0 px-1">Vali päev</h4>
                             <div class="p-1">
                                 <input type="date" id="singleDay" name="singleDay">
                             </div>
                         </div>
 
                         <div id="dayRangeContainer" class="p-1 m-1  d-flex flex-column text-center">
-                            <h4  class="m-0 px-1">Või vali vahemik (Max 15 päeva)</h4>
+                            <h4 class="m-0 px-1">Või vali vahemik (Max 15 päeva)</h4>
                             <div class="pb-1 d-flex justify-content-around">
-                                <div id="dateRangeInputContainer"class="d-flex flex-column">
-                                    <h4 >Algus kuupäev</h4 >
+                                <div class="d-flex flex-column">
+                                    <h4>Algus kuupäev</h4>
                                     <input type="date" id="dayRangeStart" name="dayRange">
                                 </div>
-                                <div id="dateRangeInputContainer"class="d-flex flex-column">
-                                    <h4 >Lõpp kuupäev</h4 >
+                                <div class="d-flex flex-column">
+                                    <h4>Lõpp kuupäev</h4>
                                     <input type="date" id="dayRangeEnd" name="dayRange">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div id="tabsFooterContainer" class="d-flex justify-content-around p-3">
+                    <div class="d-flex justify-content-around p-3">
                         <button id="buttonBackToStart" class="button p-1">Tagasi algusesse</button>
                         <button id="buttonChooseLocation" class="button p-1">Vali asukoht</button>
                     </div>
                 </div>
 
                 <div id="tabSetLocation" class="tab">
-                    <div id="tabsTitleContainer" class="d-flex justify-content-center p-3 text-center">
+                    <div  class="d-flex justify-content-center p-3 text-center tabsTitleContainer">
                         <h3>Määra asukoht</h3>
                     </div>
-                    <div id="tabsBodyContainer" class="d-flex flex-column align-items-center p-3">
+                    <div class="d-flex flex-column align-items-center p-3">
                         <div id="map" class="w-75"></div>
                         <div class="py-2 row">
                             <div class="col d-flex justify-content-center">
-                                <h4  class="m-0">Latitude⠀</h4>
+                                <h4 class="m-0">Latitude⠀</h4>
                                 <input type="text" id="latitude" name="latitude" value="25" class="mx-2">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <h4  class="m-0">Longitude</h4 >
+                                <h4 class="m-0">Longitude</h4>
                                 <input type="text" id="longitude" name="longitude" value="5" class="mx-2">
                             </div>
                         </div>
                     </div>
-                    <div id="tabsFooterContainer" class="d-flex justify-content-around p-3">
+                    <div class="d-flex justify-content-around p-3">
                         <button id="buttonBackToSetDate" class="button p-1">Tagasi kuupäeva valima</button>
                         <button id="buttonCalculate" class="button p-1">Arvuta</button>
                     </div>
                 </div>
                 <div id="tabResultSingleDay" class="tab">
-                    <div id="tabsTitleContainer" class="d-flex justify-content-center p-3 text-center">
+                    <div class="d-flex justify-content-center p-3 text-center tabsTitleContainer">
                         <h3>Tulemus</h3>
                     </div>
-                    <div id="tabsBodyContainer" class="d-flex justify-content-center p-3 text-center">
+                    <div  class="d-flex justify-content-center p-3 text-center">
                         <div id="singleDayResultContainer"
                             class="d-flex justify-content-around text-center align-items-center">
-                            <div id="resultImageContainer" class="w-25">
+                            <div class="w-25 resultImageContainer">
                                 <img src="resources/sun.png" alt="Sun" class="img-fluid w-50">
                                 <h3 id="singleDaySunriseP" class="m-0"></h3>
                             </div>
@@ -138,26 +135,26 @@
                                 <h3>Päeva pikkus:</h3>
                                 <h2 id="singleDayLength" class="m-0"></h2>
                             </div>
-                            <div id="resultImageContainer" class="w-25">
+                            <div class="w-25 resultImageContainer">
                                 <img src="resources/moon.png" alt="Sun" class="img-fluid w-50">
                                 <h3 id="singleDaySunsetP" class="m-0"></h3>
                             </div>
                         </div>
                     </div>
-                    <div id="tabsFooterContainer" class="d-flex justify-content-around p-3">
+                    <div class="d-flex justify-content-around p-3">
                         <button id="buttonResetSingle" class="button p-1">Arvuta uuesti</button>
                     </div>
                 </div>
                 <div id="tabResultDayRange" class="tab">
-                    <div id="tabsTitleContainer" class="d-flex justify-content-center p-3 text-center">
+                    <div class="d-flex justify-content-center p-3 text-center tabsTitleContainer">
                         <h3>Tulemus</h3>
                     </div>
-                    <div id="tabsBodyContainer" class="d-flex justify-content-center p-3 text-center">
+                    <div class="d-flex justify-content-center p-3 text-center">
                         <div id="dayRangeChart" class="w-100">
 
                         </div>
                     </div>
-                    <div id="tabsFooterContainer" class="d-flex justify-content-around p-3">
+                    <div class="d-flex justify-content-around p-3">
                         <button id="buttonResetRange" class="button p-1">Arvuta uuesti</button>
                     </div>
                 </div>

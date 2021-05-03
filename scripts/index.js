@@ -1,5 +1,5 @@
-// We dont need DOM event handler because this javascript file is placed as the
-// last thing in the html file so it gets loaded as the last thing making shure everything 
+// We don't need DOM event handler because this javascript file is placed as the
+// last thing in the HTML file, so it gets loaded as the last thing making sure everything 
 // else loads before javascript file
 
 // Switch current tab to tabStart setting all the other tabs to hidden
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
- * Function sets all nececary event listeners
+ * Function sets all necessary event listeners
  */
 function initEvents() {
   var singleDay = document.getElementById("singleDay");
@@ -364,8 +364,8 @@ function handleDateInputClick() {
 }
 
 /**
- * Function validates user entered dates. If dates are valid then user is 
- * directed to next page to select location.
+ * Function validates user entered dates. If dates are valid, then user is 
+ * directed to next page to select a location.
  */
 function validateDates() {
   // Set variables

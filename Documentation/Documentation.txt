@@ -1,0 +1,44 @@
+Libraries used:
+leaflet 1.7.1
+bootstrap 4.4.1
+amChart
+
+
+
+30/4/2021 Friday:
+I started with UI design. I used https://moqups.com/ to make Desktop and mobile UI designs.
+I like gray colors, so I settled with an overall gray color scheme.
+I knew that designing UI time consuming, but it was pretty much more than I expected.
+I started with an index page and then different subpages, but I am not too fond of the loading 
+of subpage every time you click on a button that takes you to the following subpage, so 
+I settled with a tab system. 
+Every tab is in index HTML, so there are no loading times.
+After that decision, I redesigned everything and called it a day.
+
+01/5/2021 Saturday:
+The primary purpose that I had set for myself is to make the page fluid. For that, I used bootstrap.
+I started with creating all tabs, inputs, map placeholders, and result placeholders.
+When HTML was done, I continued to write javascript logic. During that, I changed some design elements
+because they seemed more universally understandable and prettier. For example, one change that I made was a single day or day range selection. At first, I had radio buttons, but they didn't look nice, so I changed it to highlight single day or date range containers when the user clicks on the date input. This way, it was prettier and more understandable what kind of input is going to be used.
+I had copied some stack overflows works because of javascript Date objects. I do not trust myself with time because of much corner cases time has.  Nevertheless, the primary source of headache for Saturday was the parsing of user-inputted date data.
+I had quite a lot of trouble with javascript events and passing arguments to necessary functions. Luckily, the internet is filled with documentation and people who have had the same problems, so there's no point in reinventing the wheel.
+Adding the map was swift because leafletjs has excellent documentation.
+
+02/05/2021 Sunday:
+
+I continued from the last day and kept implementing map functionality.
+One problem that I encountered was one weird bug that would randomly
+occur and corrupt the map, but when resizing the page, it would fix itself. The root of the cause was bootstrap, so I got it working by validating the map every time map was requested to be shown.
+API implementation was swift. Only the handling of API response was 
+a little troublesome because it was asynchronous. 
+After I had validated that getting data of single date and location was 
+working, I started with implementing handling of day range.
+That was relatively straightforward until I had to visualize API data
+on a graph. I opted for amChart because it had excellent documentation.
+Sadly great documentation can't fix the error between chair and monitor. 
+I had set one of the axes to the wrong type. After cruciating one and half hours of troubleshooting why valid data would not show on the graph, I discovered the error, and voila, the chart worked.
+
+03/05/2021 Monday:
+
+The final day. Conversion of Desktop to mobile CSS was straightforward thanks to bootstrap handling a lot of fluidity. 
+I used Github pages to host the site and sent it to some friends to test the webpage. Feedback was positive with some minor problems, but there was one severe problem that I do not have the knowledge to fix. It turns out that ios safari does not partially support input type date. So on ios phones, the input area looked like a small stripe.  Due to me not having an ios phone and this kind of troubleshooting experience, I had no alternative to leave it. I'm sure there are many more browser incompatibility issues, but I tried to fix them as much as possible.

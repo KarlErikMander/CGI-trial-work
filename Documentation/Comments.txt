@@ -22,3 +22,4 @@ for data requests. Then multiple API requests for a date range, but that was get
 03/05/2021 Monday:
 I started with creating mobile CSS because all functioning works. Creating CSS for mobile is uncomfortable because I don't have a solid testing platform other than Google Chrome mobile view.
 Currently, I have decided to create the CSS with Chrome mobile view and then test it on an actual phone.
+
